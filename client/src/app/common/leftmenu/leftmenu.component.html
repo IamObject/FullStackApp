@@ -1,0 +1,41 @@
+<aside id="sidebar" class="sidebar">
+  <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" style="margin-left: 1%;" data-bs-target="#subjectmodal">
+    Add Subject
+   </button>
+  <input (keyup)="searchSubject($event)" class="form-control mr-sm-2" type="search" style="margin-top: 5px;"
+  placeholder="Search for subjects.." aria-label="Search">
+  <button  class="previous" (click)="getPreviousPage()">&laquo; Previous</button>
+  <button  class="next" (click)="getNextPage()">Next &raquo;</button>
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link " data-bs-target="#components-nav" data-bs-toggle="collapse" >
+          <i class="bi bi-menu-button-wide"></i><span>Subjects</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav"  *ngFor="let subject of subjects">
+          <li (click)="getListOf('/userdashboard/recipeList',subject.id)">
+            <!-- class="active" -->
+            <a  >
+              <i class="bi bi-circle "  ></i><span class="pointer" >{{subject.subject}}</span>
+            </a>
+          </li>
+        
+        </ul>
+      </li>
+        </ul>
+
+  </aside>
+
+  
+<div class="modal fade " id="subjectmodal" tabindex="-1" aria-labelledby="subjectmodal" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="subjectmodal">Add Subject</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-add-subject (outputFromChild) = "getNewlyAddedSubject($event)"></app-add-subject>
+      </div>
+    </div>
+  </div>
+</div>

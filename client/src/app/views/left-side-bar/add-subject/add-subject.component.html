@@ -1,0 +1,46 @@
+<form novalidate [formGroup]="addSubjectForm">
+    <div class="form-group">
+        <label class="required-field">Subject Name</label>
+        <input class="form-control required-field" formControlName="subjectName">
+        <div *ngIf="addSubjectForm.controls['subjectName'].errors !=undefined && submitted" style="color: red;">
+
+            <div *ngIf="addSubjectForm.controls['subjectName'].errors.required">
+                Subject Name is required.
+            </div>
+            <div *ngIf="addSubjectForm.controls['subjectName'].errors.minlength">
+                Subject Name must be at least 4 characters long.
+            </div>
+            <div *ngIf="addSubjectForm.controls['subjectName'].errors.maxlength">
+                Subject Name must be at most 100 characters long.
+            </div>
+            <div *ngIf="addSubjectForm.controls['subjectName'].errors.pattern">
+                Subject Name is not valid
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="required-field">Question Description</label>
+        <input class="form-control" formControlName="subjectDescription">
+        <div *ngIf="addSubjectForm.controls['subjectDescription'].errors !=undefined && submitted" style="color: red;">
+
+            <div *ngIf="addSubjectForm.controls['subjectDescription'].errors.required">
+                Subject Description is required.
+            </div>
+            <div *ngIf="addSubjectForm.controls['subjectDescription'].errors.minlength">
+                Subject Description must be at least 4 characters long.
+            </div>
+            <div *ngIf="addSubjectForm.controls['subjectDescription'].errors.maxlength">
+                Subject Description must be at most 100 characters long.
+            </div>
+            <div *ngIf="addSubjectForm.controls['subjectDescription'].errors.pattern">
+                Subject Description is not valid
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary" (click)="addSubject()" data-bs-dismiss="modal">Save changes</button>
+</div>

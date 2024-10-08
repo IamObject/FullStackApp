@@ -1,0 +1,74 @@
+
+<div  style="margin-top: 100px;">
+  <button  class="previous" (click)="getPreviousPage()">&laquo; Previous</button>
+  <button  class="next" (click)="getNextPage()">Next &raquo;</button>
+  <button type="button" class="btn btn-success" data-bs-toggle="modal" style="margin-left: 1%;" data-bs-target="#questionmodal">
+    Add Question
+    </button> 
+</div>
+
+<div class="row" >
+<div class="accordion" id="accordionExample" *ngIf="!noRecordsFound" >
+  <div *ngFor="let question of questions;index as i" >
+    <div class="accordion-item" *ngIf="question.adminApproved">
+      <h2 class="accordion-header" id="headingOne" (click)="getAllComments(question.id)">
+        
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="true" aria-controls="collapseOne">
+          {{question.id}} {{"-"}} {{question.question}}
+        </button>
+        
+      </h2>
+      <div [id]="'collapse'+i" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <!-- <app-comments [parentid]="question.id"  [posts]="posts" ></app-comments> -->
+          <app-comments1 [parentid]="question.id"  [posts]="posts"></app-comments1>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="accordion-item" *ngIf="!question.adminApproved && authGuard.isAdmin">
+      <h2 class="accordion-header" id="headingOne" (click)="getAllComments(question.id)">
+        <!-- *ngIf="authGuard.isAdmin" -->
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="true" aria-controls="collapseOne">
+          <button   (click)="approve(question.id)">
+            Approve
+           </button>
+          {{question.id}} {{"-"}} {{question.question}}
+     
+        </button>
+        
+        
+      </h2>
+      <div [id]="'collapse'+i" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <!-- <app-comments [parentid]="question.id"  [posts]="posts" ></app-comments> -->
+          <app-comments1></app-comments1> 
+        </div>
+      </div>
+    </div>
+
+
+  </div> 
+  </div>
+  <div *ngIf="noRecordsFound">
+<!-- <h1 style="text-align: center; padding-top: 20%;">{{localizationStr["lbl-no-records-found"]}}</h1> -->
+<h1 style="text-align: center; padding-top: 20%;">No Records Found</h1> 
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="questionmodal" tabindex="-1" aria-labelledby="questionmodal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="subjectmodal">Add Question</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-add-question (outputFromChild) = "getNewlyAddedQuestion($event)"></app-add-question>
+      </div>
+    </div>
+  </div>
+</div>

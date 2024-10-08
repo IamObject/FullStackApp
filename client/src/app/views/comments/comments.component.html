@@ -1,0 +1,154 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="chatContainer">
+
+	<span class="input-group-addon" style="color:#009933" id="sizing-addon3">Add Comment</span>
+	<form novalidate [formGroup]="addCommentsForm" class="input-group input-group-sm chatMessageControls">
+		
+		<textarea type="text" class="form-control" formControlName="comments" placeholder="Type your message here.." aria-describedby="sizing-addon3">
+
+</textarea>
+
+
+		<span class="input-group-btn">
+			<button id="clearMessageButton" class="btn btn-default btn-sm" type="button" (click)="clear()" >Clear</button>
+			<button id="sendMessageButton" class="btn btn-primary btn-sm" type="button" (click)="addComments()">
+				<i class="fa fa-send"></i>Send</button>
+		</span>
+		<span class="input-group-btn">
+			<!-- <button id="undoSendButton" class="btn btn-default" type="button" disabled> -->
+				<!-- <i class="fa fa-undo"></i>Undo</button> -->
+		</span>
+
+	</form>
+	<div *ngIf="addCommentsForm.controls['comments'].errors !=undefined && formSubmitted" style="color: red;">
+
+		<div *ngIf="addCommentsForm.controls['comments'].errors.required">
+			Please enter your commments
+		</div>
+	</div>
+	<!-- <button class="btn btn-link" style="color:green" (click)="getPreviousPage()">
+		<div>Previous</div>
+	  </button>
+	  <button class="btn btn-link" style="color:green;margin-left: 50px;" (click)="getNextPage()">
+		<div>Next</div>
+	  </button> -->
+	  <button  class="previous" (click)="getPreviousPage()">&laquo; Previous</button>
+<button  class="next" (click)="getNextPage()">Next &raquo;</button>
+	<div class="chatHistoryContainer"    > 
+		
+		<ul class="formComments" infinite-scroll 
+		(scrolled)="onScrollDown($event)"  [scrollWindow]="false" >
+			<div  >
+
+			<div *ngFor="let post of posts;let i=index;" >
+				
+				<li class="commentLi commentstep-1" data-commentid="4">
+					<table class="form-comments-table">
+						<tr>
+							<!-- <td>
+					<div class="comment-avatar">
+						<img src="">
+					</div>
+				</td> -->
+							<td > 
+								<div id="comment-4" data-commentid="4">
+									<!-- <ngb-accordion #acc="ngbAccordion" type="light" > -->
+									<!-- <ngb-panel (panelChange)="beforeChange($event)"> -->
+									<!-- <ng-template ngbPanelTitle > -->
+									<!-- <div class="comment-user">{{post.author}}</div> -->
+									<div class="input-group input-group-sm chatMessageControls" style="color: #dc3545;">
+										<!-- <span class="input-group-addon" id="sizing-addon3">Comment</span> -->
+										<textarea [(ngModel)]="post.comment"  disabled=true style="width: 800px;" type="text" class="form-control" placeholder={{post.comment}} aria-describedby="sizing-addon3">
+</textarea>
+
+										<!-- contenteditable="true"  -->
+
+										<div>
+											<!-- <span class=""> -->
+												<button id="clearMessageButton" (click)="deleteComment(post.id,i)" class="btn btn-danger btn-sm" type="button">Delete</button>
+												<!-- <button id="sendMessageButton" class="btn btn-primary" type="button"><i class="fa fa-send" ></i>Send</button> -->
+												<!-- <button id="sendMessageButton" class="btn btn-danger" type="button">
+													<i class="fa fa-send"></i>Edit</button> -->
+													<!-- <button style="padding-left: 20px"  (click)="deleteComment(post.id)" type="button" class="btn btn-danger">   
+														Delete
+													</button> -->
+											<!-- </span> -->
+											<!-- <span class="input-group-btn">
+												<button id="undoSendButton" class="btn btn-default" type="button" disabled>
+													<i class="fa fa-undo"></i>Undo</button>
+											</span> -->
+										</div>
+									</div>
+									
+
+									<div class="btn-group" >
+										<button type="button" class="btn btn-success btn-sm" style="margin-top: 5px;">
+											Magic No - <span class="badge alert-success">{{subjectId}}{{'-'}}{{parentid}}{{'-'}}{{post.id}}</span>
+										  </button>
+										  <button (click)="likePostComments(post.id,i)" type="button" class="btn btn-success btn-sm" style="margin-top: 5px;">
+											Likes <span class="badge alert-success">{{post.likes}}</span>
+										  </button>
+										  <button (click)="disLikePostComments(post.id,i)" type="button" class="btn btn-success btn-sm" style="margin-top: 5px;">
+											Dislikes <span class="badge alert-success">{{post.dislikes}}</span>
+										  </button>
+										  <button type="button" class="btn btn-success btn-sm" style="margin-top: 5px;">
+											Author <span class="badge alert-success"> {{post.author}}</span>
+										  </button>
+										  <button type="button" class="btn btn-success btn-sm" style="margin-top: 5px;">
+											Created At <span class="badge alert-success">{{post.createdAt | date:'medium'}}</span>
+										  </button>
+									  </div>
+
+									<!-- </ng-template> -->
+									<!-- <ng-template >
+														
+												  </ng-template> -->
+									<!-- </ngb-panel>
+						</ngb-accordion> -->
+								</div>
+							</td>
+						</tr>
+					</table>
+				</li>
+			</div></div>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,69 @@
+
+   <div class="container mt-5 mb-5">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-md-6">
+        <div class="card px-5 py-5">
+       <form class="form-horizontal form-row form-group"  [formGroup]="loginForm" >
+          <h1>
+              <p>Login </p>
+           </h1>
+      
+              <label for="validationDefault01">Email id</label>
+              <!-- [(ngModel)]="user.username" -->
+              <input type="text" class="form-control" formControlName="email" autocomplete="true"  value="email" [(ngModel)]="user.email"  name= "email" id="email"    >
+              <div *ngIf="loginForm.controls['email'].errors != undefined && formSubmitted" class="errorMSg alert alert-danger">
+                <div *ngIf="loginForm.controls['email'].errors.required">
+                  Please enter email
+                </div>
+                <div *ngIf="loginForm.controls['email'].errors.minlength">
+                  Please enter valid email
+                </div>
+                <div *ngIf="loginForm.controls['email'].errors.maxlength">
+                    Please enter valid email
+                </div>
+                <div *ngIf="loginForm.controls['email'].errors.pattern">
+                    Please enter valid email
+                </div>
+              </div>
+     
+      
+           
+          
+              <label for="validationDefault02">Password</label>
+              <input type="password" class="form-control " formControlName="password"   autocomplete="true"  value="email99"  [(ngModel)]="user.password"  name= "password" id="password"    >
+              <input type="checkbox" id="showpassword"  class="pointer" (click)="showpassword()">  Show Password 
+              
+             <div *ngIf="loginForm.controls['password'].errors != undefined && formSubmitted"class="errorMSg alert alert-danger">
+                <div *ngIf="loginForm.controls['password'].errors.required">
+                    Please enter password
+                </div>
+               <div *ngIf="loginForm.controls['password'].errors.minlength">
+                  Please enter valid password
+                </div>
+                <div *ngIf="loginForm.controls['password'].errors.maxlength">
+                    Please enter valid password
+                </div>
+                <div *ngIf="loginForm.controls['password'].errors.pattern">
+                    Please enter valid password
+                </div>
+              </div>
+      
+     
+          <div class="form-row">
+           
+              <button type="submit" (click)="login()"  class="btn btn-success">Log in</button> 
+              <button type="submit" (click)="signup()"   class="btn btn-success">Register</button>
+
+            </div>
+
+
+           <div>  <a class="navbar-brand pointer"  (click)="fp()" > <span style="color: blue;">Forgot Password</span></a></div>
+        </form>
+      </div>
+      </div>
+    </div>
+      </div>
+      
+
+   
+   

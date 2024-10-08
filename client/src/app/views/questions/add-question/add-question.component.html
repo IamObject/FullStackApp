@@ -1,0 +1,46 @@
+
+
+<form novalidate [formGroup]="addQuestionForm">
+    <div class="form-group">
+        <label  class="required-field">Question Name</label>
+            <input class="form-control required-field" formControlName="question" >
+            <div *ngIf="addQuestionForm.controls['question'].errors !=undefined && submitted" style="color: red;">
+            
+                <div *ngIf="addQuestionForm.controls['question'].errors.required">
+                    Question Name is required.
+                </div>
+                <div *ngIf="addQuestionForm.controls['question'].errors.minlength">
+                    Question Name must be at least 4 characters long.
+                </div>
+                <div *ngIf="addQuestionForm.controls['question'].errors.maxlength">
+                    Question Name must be at most 100 characters long.
+                </div>
+                <div *ngIf="addQuestionForm.controls['question'].errors.pattern">
+                    Question Name is not valid
+                </div>
+            </div>
+    </div>
+    <div class="form-group">
+            <label  class="required-field">Question Description</label>
+            <input class="form-control" formControlName="questionDescription">
+            <div *ngIf="addQuestionForm.controls['questionDescription'].errors !=undefined && submitted" style="color: red;">
+            
+                <div *ngIf="addQuestionForm.controls['questionDescription'].errors.required">
+                     QuestionDescription is required.
+                </div>
+                <div *ngIf="addQuestionForm.controls['questionDescription'].errors.minlength">
+                    QuestionDescription must be at least 4 characters long.
+                </div>
+                <div *ngIf="addQuestionForm.controls['questionDescription'].errors.maxlength">
+                    QuestionDescription must be at most 100 characters long.
+                </div>
+                <div *ngIf="addQuestionForm.controls['questionDescription'].errors.pattern">
+                    QuestionDescription is not valid
+                </div>
+            </div>
+    </div>
+</form>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary" (click)="addQuestion()" data-bs-dismiss="modal">Save changes</button>
+</div>

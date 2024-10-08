@@ -1,0 +1,26 @@
+/* next previous button */
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+  }
+  
+  .next {
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  .pointer {cursor: pointer;}
+
+  .card{
+    border:none;
+    padding: 20px;
+    background-color: #5bf0ce;
+    color: rgb(18, 16, 16);
+
+   }
+
+/* .btn {
+background-color: red !important;
+color: white !important;
+
+} */

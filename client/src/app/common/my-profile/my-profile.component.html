@@ -1,0 +1,26 @@
+<div class="student-profile py-4">
+  <div style="height: 150px"></div>  
+  <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <nav class="navbar navbar-inverse">
+            <ul class="nav navbar-nav">
+
+              <li><a routerLink="/myProfile/resetPassword">Reset Password</a></li>
+              <li><a routerLink="/myProfile/genInfo">General Information</a></li>
+              
+              <li  ><a routerLink="/myProfile/admindashboard">Admin Dashboard</a></li>
+              <li *roles="['USER','ADMIN']"  ><a routerLink="/myProfile/contactus">Contact Us</a></li>
+              
+              <li><a routerLink="/myProfile/othinfo">About Me</a></li>
+              <!-- <li><a routerLink="/myProfile/commingsoon">Comming Soon</a></li>              -->
+            </ul>
+          </nav>
+        </div>
+        <div class="col-10">
+            <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+

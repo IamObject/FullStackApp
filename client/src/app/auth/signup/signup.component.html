@@ -1,0 +1,94 @@
+
+
+   <div class="container mt-5 mb-5">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-md-6">
+        <div class="card px-5 py-5">
+      <form name="form" [formGroup]="signUpForm" #f="ngForm" novalidate>
+        <h1>
+          <p>Registration </p>
+        </h1>
+    
+      <div class="form-row form-group">
+        <label for="inputAddress2">Email</label>
+        <input type="email" class="form-control" formControlName="email" id="Email" [(ngModel)]="user.email"
+          name="email">
+        <div *ngIf="signUpForm.controls['email'].errors != undefined && formSubmitted"
+          class="errorMSg alert alert-danger">
+          <div *ngIf="signUpForm.controls['email'].errors.required">
+            Please enter email
+          </div>
+          <div *ngIf="signUpForm.controls['email'].errors.minlength">
+            Please enter valid email
+          </div>
+          <div *ngIf="signUpForm.controls['email'].errors.email">
+            Please enter valid email
+          </div>
+        </div>
+      </div>
+      <div class="form-row form-group">
+        <label for="inputAddress23">Your name</label>
+        <input type="test" class="form-control" formControlName="fullName" id="Name" [(ngModel)]="user.fullName"
+          name="fullName">
+        <div *ngIf="signUpForm.controls['fullName'].errors != undefined && formSubmitted"
+          class="errorMSg alert alert-danger">
+          <div *ngIf="signUpForm.controls['fullName'].errors.required">
+            Please enter name
+          </div>
+          <div *ngIf="signUpForm.controls['fullName'].errors.minlength">
+            Please enter valid name
+          </div>
+          <div *ngIf="signUpForm.controls['fullName'].errors.emfullNameail">
+            Please enter valid name
+          </div>
+        </div>
+      </div>
+      <div class="form-row form-group">
+
+        <label for="inputAddress2">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password" [(ngModel)]="user.password"
+          name="password">
+        <div *ngIf="signUpForm.controls['password'].errors != undefined && formSubmitted"
+          class="errorMSg alert alert-danger">
+          <div *ngIf="signUpForm.controls['password'].errors.required">
+            Please enter password
+          </div>
+          <div *ngIf="signUpForm.controls['password'].errors.minlength">
+            Please enter valid password
+          </div>
+
+        </div>
+
+      </div>
+      <div class="form-row form-group">
+
+        <label for="inputAddress2">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
+          [(ngModel)]="user.confirmPassword" name="confirmPassword">
+        <div *ngIf="signUpForm.controls['confirmPassword'].errors != undefined && formSubmitted"
+          class="errorMSg alert alert-danger">
+          <div *ngIf="signUpForm.controls['confirmPassword'].errors.required">
+            Please enter confirmPassword
+          </div>
+          <div *ngIf="signUpForm.controls['confirmPassword'].errors.minlength">
+            Please enter valid confirmPassword
+          </div>
+        </div>
+
+      </div>
+
+      <div *ngIf="message" class="alert alert-success">
+        <strong></strong> {{message}}
+      </div>
+
+      <div class="form-row">
+      <button type="submit" class="btn btn-success" (click)="register()">Register</button>
+      <button type="submit" (click)="login()" class="btn btn-success">Log in</button>
+      
+      </div>
+     
+    </form>
+  </div>
+</div>
+</div>
+</div>
